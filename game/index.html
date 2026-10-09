@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+  <meta name="theme-color" content="#2b2018">
+  <title>豚物语 · 三年育成记</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <noscript><div class="noscript">这个游戏需要启用 JavaScript。</div></noscript>
+
+  <section id="title-screen" class="title-screen">
+    <div class="title-shade"></div>
+    <div class="title-card pixel-panel">
+      <div class="title-pig" aria-hidden="true"><span></span></div>
+      <p class="eyebrow">青石镇 · 三年育成记</p>
+      <h1>豚物语</h1>
+      <p class="title-sub">种田、育猪、赶集，在 180 个游戏日里养出你的冠军。</p>
+      <div class="title-actions">
+        <button id="new-game-btn" class="pixel-btn primary">＋ 新建农场</button>
+        <button id="continue-btn" class="pixel-btn">继续最近存档</button>
+      </div>
+      <div class="title-rule"></div>
+      <div class="save-heading"><span>农场账本</span><small>自动存档 · 最多 8 份</small></div>
+      <div id="save-list" class="save-list"></div>
+      <div class="title-foot">
+        <button id="title-audio" class="text-btn">♫ 音乐：开</button>
+        <span>v1.12.0 · 方向键 / WASD 行走 · E 互动 · 点击地点自动前往</span>
+      </div>
+    </div>
+  </section>
+
+  <main id="game" class="game hidden" aria-live="polite">
+    <header class="topbar">
+      <div class="brand"><span class="brand-mark">P</span><span><b id="farm-name">青禾猪场</b><small>QINGSHI VALLEY</small></span></div>
+      <div class="calendar-card">
+        <span id="year-badge">第 1 年</span>
+        <b id="day-badge">春 · 1 日</b>
+        <span id="phase-badge">清晨</span>
+      </div>
+      <div class="time-track" title="每年 60 日，共三年">
+        <div><span id="year-progress"></span></div>
+        <small id="total-progress">总进度 1 / 180 日</small>
+      </div>
+      <div class="top-stats">
+        <span class="stat-chip money"><i>¥</i><b id="money">0</b></span>
+        <span class="stat-chip"><i>★</i><b id="reputation">0</b></span>
+        <span class="stat-chip weather"><i id="weather-icon">☀</i><b id="weather">晴</b></span>
+      </div>
+      <div class="top-controls">
+        <button id="audio-btn" class="icon-btn" title="音乐与音效">♫</button>
+        <button id="save-btn" class="icon-btn" title="立即存档">▣</button>
+        <button id="home-btn" class="icon-btn" title="返回标题">⌂</button>
+      </div>
+    </header>
+
+    <section class="play-area">
+      <aside class="task-rail pixel-panel">
+        <div class="rail-title"><span>今日状况</span><b id="live-count">0 / 0</b></div>
+        <div id="warning-list" class="warning-list"></div>
+        <button id="story-rail" class="story-rail" data-open="story"><small>当前主线</small><b id="story-rail-title">旧钥匙与第一顿饲料</b><span id="story-rail-progress">0 / 2 项</span></button>
+        <div class="rail-divider"></div>
+        <div class="mini-stats">
+          <div><span>行动</span><b id="action-count">0</b></div>
+          <div><span>兽药</span><b id="medicine-count">0</b></div>
+          <div><span>待收</span><b id="ready-count">0</b></div>
+        </div>
+        <div class="next-event"><span>村中动静</span><b id="event-countdown">约 3 次行动后</b></div>
+        <p class="rail-tip" id="rail-tip">走近发光地点按 E，或直接点击地点。</p>
+      </aside>
+
+      <div id="world-wrap" class="world-wrap">
+        <div id="world" class="world" tabindex="0" aria-label="可行走的农场地图">
+          <div id="scene-motion" class="scene-motion" aria-hidden="true">
+            <div class="scene-slice tree-left"></div><div class="scene-slice tree-main"></div><div class="scene-slice tree-right"></div>
+            <div class="scene-slice crop-cabbage"></div><div class="scene-slice crop-corn"></div><div class="scene-slice crop-vegetable"></div>
+            <div id="grass-layer" class="grass-layer"></div>
+          </div>
+          <div class="world-light"></div>
+          <div id="weather-layer" class="weather-layer"></div>
+          <div id="pig-layer" class="pig-layer"></div>
+
+          <button class="hotspot" data-zone="house" data-panel="journal" style="--x:18.3%;--y:40.2%"><span>农舍正门</span></button>
+          <button class="hotspot" data-zone="field" data-panel="farm" style="--x:46%;--y:64.7%"><span>农田入口</span></button>
+          <button class="hotspot" data-zone="pen" data-panel="pigs" style="--x:64.5%;--y:65.8%"><span>大猪圈栏门</span></button>
+          <button class="hotspot" data-zone="mill" data-panel="workshop" style="--x:72%;--y:75.5%"><span>工坊装卸口</span></button>
+          <button class="hotspot" data-zone="market" data-panel="marketTrip" style="--x:42.5%;--y:32.7%"><span>前往青石镇</span></button>
+          <button class="hotspot journey-hotspot" data-zone="journey" data-panel="travel" style="--x:45.8%;--y:31.5%"><span>村外岔路 · 更多地点</span></button>
+          <button class="hotspot rival-road-hotspot" data-zone="rival" data-panel="rivalTrip" style="--x:4.2%;--y:62%"><span>前往石桥牧场</span></button>
+          <button class="hotspot" data-zone="build" data-panel="build" style="--x:57.2%;--y:61.5%"><span>建造牌</span></button>
+
+          <div id="player" class="player-sprite dir-down" style="left:31%;top:58%" aria-label="玩家角色"></div>
+          <canvas id="weather-canvas" class="weather-canvas" aria-hidden="true"></canvas>
+          <canvas id="collision-canvas" class="collision-canvas" aria-hidden="true"></canvas>
+          <div id="near-prompt" class="near-prompt hidden">E · <span>进入</span></div>
+          <div class="world-caption"><span id="location-label">青禾猪场</span><small id="world-hint">点击地图地点，角色会自动寻找可行道路</small></div>
+        </div>
+
+        <div id="market-world" class="market-world hidden" tabindex="0" aria-label="可行走的青石镇集市地图">
+          <div class="market-ambient" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div class="market-light"></div>
+          <button class="market-hotspot market-exit" data-market-zone="exit" style="--x:50%;--y:19%"><span>返回农场</span></button>
+          <button class="market-hotspot market-produce" data-market-zone="produce" style="--x:14%;--y:58%"><span>蔬果粮店</span></button>
+          <button class="market-hotspot market-supplies" data-market-zone="supplies" style="--x:31%;--y:39%"><span>饲料铺</span></button>
+          <button class="market-hotspot market-goods" data-market-zone="goods" style="--x:69%;--y:41%"><span>杂货药铺</span></button>
+          <button class="market-hotspot market-livestock" data-market-zone="livestock" style="--x:83%;--y:57%"><span>何伯牲畜行</span></button>
+          <button class="market-hotspot market-contracts" data-market-zone="contracts" style="--x:50%;--y:31%"><span>集市合同板</span></button>
+          <button class="market-hotspot market-stall" data-market-zone="stall" style="--x:49%;--y:65%"><span>我的摊位 · 出售</span></button>
+          <div id="market-player" class="player-sprite dir-up" style="left:27%;top:88%" aria-label="集市中的玩家角色"></div>
+          <div id="market-near-prompt" class="near-prompt hidden">E · <span>交谈</span></div>
+          <div class="world-caption market-caption"><span>青石镇集市</span><small id="market-world-hint">沿街走到商铺或自己的摊位前进行交易</small></div>
+        </div>
+
+        <div id="rival-world" class="rival-world hidden" tabindex="0" aria-label="可行走的石桥牧场地图">
+          <div class="rival-ambient" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <div class="rival-light"></div>
+          <div id="rival-facility-visuals" class="rival-facility-visuals" aria-hidden="true">
+            <i class="rival-facility-prop prop-clinic"><span>兽医室</span></i>
+            <i class="rival-facility-prop prop-storehouse"><span>饲料仓</span></i>
+            <i class="rival-facility-prop prop-training"><span>训练场</span></i>
+            <i class="rival-facility-prop prop-pen"><span>育成猪舍</span></i>
+          </div>
+          <div class="rival-pig-layer" aria-hidden="true">
+            <div class="pig-sprite rival-pig" data-breed="largewhite" data-rival-pen="north" data-title-base="石桥牧场白猪" title="石桥牧场白猪 · 安静站立" style="left:86%;top:51%;--pig-row:0px;--scale:.78"></div>
+            <div class="pig-sprite rival-pig" data-breed="duroc" data-rival-pen="middle" data-title-base="石桥牧场红猪" title="石桥牧场红猪 · 安静站立" style="left:73%;top:64%;--pig-row:-64px;--scale:.86"></div>
+            <div class="pig-sprite rival-pig" data-breed="berkshire" data-rival-pen="south" data-title-base="石桥牧场黑猪" title="石桥牧场黑猪 · 安静站立" style="left:87%;top:78%;--pig-row:-128px;--scale:.76"></div>
+          </div>
+          <div class="rival-map-sprite" style="left:38%;top:44%" aria-label="竞争对手陆野"></div>
+          <button class="rival-hotspot rival-exit" data-rival-zone="exit" style="--x:4.5%;--y:64%"><span>返回自己的农场</span></button>
+          <button class="rival-hotspot rival-owner" data-rival-zone="owner" style="--x:38%;--y:44%"><span>陆野 · 竞争对手</span></button>
+          <button class="rival-hotspot rival-board" data-rival-zone="board" style="--x:53%;--y:48%"><span>荣誉墙与对手情报</span></button>
+          <button class="rival-hotspot rival-training" data-rival-zone="training" style="--x:44%;--y:55%"><span>称重台 · 训练赛</span></button>
+          <button class="rival-hotspot rival-champion" data-rival-zone="champion" style="--x:73%;--y:64%"><span>黑将军的训练圈</span></button>
+          <div id="rival-player" class="player-sprite dir-right" style="left:9%;top:68%" aria-label="石桥牧场中的玩家角色"></div>
+          <div id="rival-near-prompt" class="near-prompt hidden">E · <span>交谈</span></div>
+          <div class="world-caption rival-caption"><span>石桥牧场</span><small id="rival-world-hint">沿石路拜访陆野，观察黑将军或参加训练赛</small></div>
+        </div>
+
+        <div id="extra-world" class="extra-world hidden" tabindex="0" aria-label="可行走的扩展地点地图">
+          <div class="extra-ambient" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="extra-light"></div>
+          <div id="extra-hotspots"></div>
+          <div id="extra-player" class="player-sprite dir-up" style="left:50%;top:90%" aria-label="扩展场景中的玩家角色"></div>
+          <div id="extra-near-prompt" class="near-prompt hidden">E · <span>互动</span></div>
+          <div class="world-caption extra-caption"><span id="extra-location-label">后山林场</span><small id="extra-world-hint">沿道路探索场景</small></div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="dock" aria-label="主要功能">
+      <button data-open="pigs"><i>🐖</i><span>猪群</span><kbd>1</kbd></button>
+      <button data-open="farm"><i>🌱</i><span>农田</span><kbd>2</kbd></button>
+      <button data-open="workshop"><i>⚙</i><span>饲料</span><kbd>3</kbd></button>
+      <button data-open="marketTrip"><i>⚖</i><span>集市</span><kbd>4</kbd></button>
+      <button data-open="build"><i>⌂</i><span>建造</span><kbd>5</kbd></button>
+      <button data-open="catalog"><i>▤</i><span>猪种图鉴</span><kbd>6</kbd></button>
+      <button data-open="journal"><i>✎</i><span>账本</span><kbd>7</kbd></button>
+      <button data-open="story"><i>★</i><span>主线</span><kbd>8</kbd></button>
+    </nav>
+  </main>
+
+  <div id="panel-overlay" class="overlay hidden" role="dialog" aria-modal="true">
+    <section class="panel-window pixel-panel">
+      <header class="panel-header"><div><p id="panel-kicker">农场管理</p><h2 id="panel-title">猪群</h2></div><button class="close-btn" data-close="panel">×</button></header>
+      <div id="panel-tabs" class="panel-tabs"></div>
+      <div id="panel-body" class="panel-body"></div>
+    </section>
+  </div>
+
+  <div id="event-overlay" class="overlay event-overlay hidden" role="alertdialog" aria-modal="true">
+    <section class="event-card pixel-panel">
+      <div class="event-icon">!</div><p class="eyebrow">不消耗行动时间</p><h2 id="event-title">突发事件</h2><p id="event-text"></p><div id="event-choices" class="event-choices"></div>
+    </section>
+  </div>
+
+  <div id="festival-game-overlay" class="overlay festival-game-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="festival-game-title">
+    <section id="festival-game-card" class="festival-game-card pixel-panel" data-mode="flowers">
+      <header class="festival-game-header">
+        <div><p class="eyebrow">青石赛场 · 季节小游戏</p><h2 id="festival-game-title">春日猪仔会</h2></div>
+        <button id="festival-game-abandon" class="close-btn" type="button" title="退出小游戏">×</button>
+      </header>
+      <div class="festival-game-hud">
+        <span id="festival-game-pig">参赛猪</span><b id="festival-game-timer">准备</b><span id="festival-game-score">操作表现 0</span>
+      </div>
+      <div id="festival-game-intro" class="festival-game-intro">
+        <div id="festival-game-icon" class="festival-game-icon">🌸</div>
+        <h3 id="festival-game-subtitle">花环引导</h3>
+        <p id="festival-game-instructions"></p>
+        <div class="festival-rule-strip"><span>每季只能正式参加一次</span><span>完成后结算半日</span><span>猪只状态仍是评分主体</span></div>
+        <button id="festival-game-start" class="pixel-btn primary" type="button">开始小游戏</button>
+      </div>
+      <div id="festival-game-play" class="festival-game-play hidden">
+        <div id="festival-game-stage" class="festival-game-stage"></div>
+        <p id="festival-game-feedback" class="festival-game-feedback" aria-live="polite">准备开始</p>
+        <div class="festival-game-progress"><i id="festival-game-progress-bar"></i></div>
+      </div>
+      <div id="festival-game-result" class="festival-game-result hidden">
+        <div id="festival-result-medal" class="festival-result-medal">🏅</div>
+        <h3 id="festival-result-title">活动完成</h3>
+        <p id="festival-result-summary"></p>
+        <div id="festival-result-breakdown" class="festival-result-breakdown"></div>
+        <button id="festival-result-close" class="pixel-btn primary" type="button">领取奖励并返回</button>
+      </div>
+    </section>
+  </div>
+
+  <div id="dialogue" class="dialogue hidden" role="dialog">
+    <div id="portrait" class="portrait farmer"></div>
+    <div class="dialogue-box pixel-panel"><b id="speaker">小禾</b><p id="dialogue-text"></p><div id="dialogue-choices" class="dialogue-choices hidden"></div><span id="dialogue-continue">点击继续 ▾</span></div>
+  </div>
+
+  <div id="new-save-overlay" class="overlay hidden" role="dialog" aria-modal="true">
+    <form id="new-save-form" class="new-save-card pixel-panel">
+      <button type="button" class="close-btn" data-close="new-save">×</button>
+      <p class="eyebrow">一本新的农场账本</p><h2>从第一年春天开始</h2>
+      <label>你的名字<input id="player-name-input" maxlength="8" value="小禾" required></label>
+      <label>农场名字<input id="farm-name-input" maxlength="12" value="青禾猪场" required></label>
+      <div class="new-summary"><span>起步资金 ¥5,200</span><span>3 只初始猪</span><span>三年 180 日</span></div>
+      <button class="pixel-btn primary wide" type="submit">签下账本，开始养猪</button>
+    </form>
+  </div>
+
+  <div id="ending-overlay" class="overlay ending-overlay hidden" role="dialog" aria-modal="true">
+    <section class="ending-card pixel-panel">
+      <p class="eyebrow">第三年 · 年底比猪大赛</p><div id="ending-cup" class="ending-cup">🏆</div><h2 id="ending-title"></h2><p id="ending-text"></p>
+      <div id="ranking-list" class="ranking-list"></div>
+      <p class="ending-note">本存档已保留。你仍可回农场查看、抚摸和陪伴猪只，但游戏日程不再推进。</p>
+      <div class="ending-actions"><button id="ending-return" class="pixel-btn primary">回农场看看</button><button id="ending-new" class="pixel-btn">另建新存档</button></div>
+    </section>
+  </div>
+
+  <div id="confirm-overlay" class="overlay hidden" role="dialog" aria-modal="true">
+    <section class="confirm-card pixel-panel"><h3 id="confirm-title">确认</h3><p id="confirm-text"></p><div><button id="confirm-cancel" class="pixel-btn">取消</button><button id="confirm-ok" class="pixel-btn danger">确认</button></div></section>
+  </div>
+
+  <div id="day-transition" class="day-transition hidden" aria-live="polite" aria-atomic="true">
+    <div class="day-transition-card"><small id="day-transition-year">第 1 年 · 春</small><strong id="day-transition-day">第 2 日</strong><span>新的一天</span></div>
+  </div>
+
+  <div id="scene-transition" class="scene-transition hidden" aria-live="polite" aria-atomic="true">
+    <div class="scene-transition-card"><small>正在前往</small><strong id="scene-transition-label">石桥牧场</strong></div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <input id="save-import-input" class="hidden" type="file" accept=".json,application/json" aria-hidden="true" tabindex="-1">
+
+  <script src="data.js"></script>
+  <script src="engine.js"></script>
+  <script src="scene.js"></script>
+  <script src="breed-art.js"></script>
+  <script src="app.js"></script>
+  <script src="animation.js"></script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "tun-story-platforms",
+  "version": "1.13.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "build:desktop": "node scripts/build.mjs --desktop",
+    "dev": "node tests/server.mjs",
+    "check": "node tests/static-check.mjs",
+    "check:desktop": "node tests/preservation.mjs",
+    "test": "node tests/static-check.mjs && node tests/preservation.mjs && node tests/core-regression/run.cjs && node tests/lifecycle.cjs"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}

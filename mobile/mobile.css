@@ -1,0 +1,283 @@
+/* Scoped to the mobile shell: the desktop source and presentation remain shared. */
+html.mobile-shell {
+  --mobile-viewport-height: 100dvh;
+  --mobile-viewport-width: 100%;
+  --mobile-viewport-left: 0px;
+  --mobile-viewport-top: 0px;
+  --mobile-map-width: 100%;
+  --mobile-map-height: auto;
+  --mobile-sprite-size: 34px;
+  --safe-top: env(safe-area-inset-top, 0px);
+  --safe-right: env(safe-area-inset-right, 0px);
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-left: env(safe-area-inset-left, 0px);
+  width: 100%; height: 100%; overflow: hidden; overscroll-behavior: none;
+  -webkit-text-size-adjust: 100%;
+}
+html.mobile-shell body {
+  position: absolute; left: var(--mobile-viewport-left); top: var(--mobile-viewport-top);
+  width: var(--mobile-viewport-width); height: var(--mobile-viewport-height); min-height: 0;
+  overflow: hidden; overscroll-behavior: none; -webkit-tap-highlight-color: transparent;
+}
+html.mobile-shell button { touch-action: manipulation; -webkit-user-select: none; user-select: none; }
+html.mobile-shell button:focus-visible { outline: 3px solid #eebc60; outline-offset: 2px; }
+html.mobile-shell input, html.mobile-shell select, html.mobile-shell textarea { font-size: 16px; min-height: 44px; }
+html.mobile-shell .pixel-btn, html.mobile-shell .action-btn, html.mobile-shell .text-btn,
+html.mobile-shell .close-btn, html.mobile-shell .panel-tabs button, html.mobile-shell .catalog-filter button {
+  min-height: 44px;
+}
+html.mobile-shell .close-btn { width: 44px; height: 44px; flex-shrink: 0; }
+html.mobile-shell .game {
+  height: var(--mobile-viewport-height); min-height: 0; width: 100%;
+  display: grid; grid-template-rows: auto minmax(0, 1fr) auto; align-content: stretch;
+}
+html.mobile-shell .topbar {
+  position: relative; top: auto; display: grid;
+  grid-template-columns: minmax(0, 1fr) auto; gap: 5px 8px;
+  padding: calc(7px + var(--safe-top)) calc(8px + var(--safe-right)) 8px calc(8px + var(--safe-left));
+  border-bottom-width: 3px; box-shadow: 0 2px #b17a3d;
+}
+html.mobile-shell .brand { min-width: 0; width: auto; gap: 6px; }
+html.mobile-shell .brand-mark { width: 29px; height: 29px; font-size: 18px; border-width: 2px; }
+html.mobile-shell .brand b { font-size: 14px; max-width: 150px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+html.mobile-shell .brand small { display: none; }
+html.mobile-shell .calendar-card { margin: 0; padding: 5px 7px; gap: 5px; font-size: 10px; justify-self: end; }
+html.mobile-shell .calendar-card b { font-size: 12px; }
+html.mobile-shell .calendar-card span:last-child { display: inline; }
+html.mobile-shell .time-track { display: none; }
+html.mobile-shell .top-stats { grid-column: 1; grid-row: 2; width: auto; order: initial; margin: 0; gap: 5px; justify-content: start; align-items: center; }
+html.mobile-shell .stat-chip { min-width: 0; padding: 4px 7px; gap: 4px; font-size: 12px; border-width: 1px; }
+html.mobile-shell .top-controls { position: static; display: flex; grid-column: 2; grid-row: 2; align-self: center; justify-self: end; gap: 6px; transform: none; }
+html.mobile-shell .icon-btn { width: 44px; height: 44px; min-height: 44px; font-size: 21px; }
+html.mobile-shell .play-area {
+  position: relative; display: block; grid-template-columns: minmax(0, 1fr);
+  min-height: 0; min-width: 0; overflow: hidden;
+  padding: 7px calc(4px + var(--safe-right)) 7px calc(4px + var(--safe-left));
+  background: radial-gradient(ellipse at 50% 15%, #415a3c, #263521 70%, #1a2519);
+}
+html.mobile-shell .task-rail { display: none; }
+html.mobile-shell .world-wrap {
+  width: 100%; height: 100%; min-height: 0; display: grid; place-items: center;
+  padding-bottom: 160px; background: none; box-shadow: none; overflow: hidden; touch-action: none;
+}
+html.mobile-shell .world, html.mobile-shell .market-world,
+html.mobile-shell .rival-world, html.mobile-shell .extra-world {
+  width: var(--mobile-map-width) !important; height: var(--mobile-map-height) !important;
+  min-width: 0; max-width: 100%; max-height: none; aspect-ratio: 16 / 9;
+  outline: 2px solid #493221; box-shadow: 0 0 0 4px #b37c42, 0 10px 22px #0d100c;
+  touch-action: none; -webkit-user-select: none; user-select: none;
+}
+html.mobile-shell .player-sprite.art-ready,
+html.mobile-shell .pig-sprite.art-ready { width: var(--mobile-sprite-size); height: var(--mobile-sprite-size); }
+html.mobile-shell .art-canvas { width: 100%; height: 100%; }
+html.mobile-shell .rival-map-sprite { width: var(--mobile-sprite-size); height: var(--mobile-sprite-size); background-size: contain; }
+html.mobile-shell .hotspot, html.mobile-shell .market-hotspot,
+html.mobile-shell .rival-hotspot, html.mobile-shell .extra-hotspot {
+  min-width: 44px; min-height: 44px; width: 44px; height: 44px;
+  opacity: .9; border: 0; background: transparent; box-shadow: none; animation: none;
+}
+html.mobile-shell .hotspot:before, html.mobile-shell .market-hotspot:before,
+html.mobile-shell .rival-hotspot:before, html.mobile-shell .extra-hotspot:before {
+  content: '·'; position: absolute; left: 50%; top: 50%; width: 20px; height: 20px;
+  transform: translate(-50%, -50%); border: 2px solid #ffe7a0; border-radius: 50%;
+  background: #49382072; color: #ffeca5; font: 900 22px/12px system-ui;
+  box-shadow: 0 0 0 1px #45341ca0, 0 0 10px #f5ca6a99; pointer-events: none;
+}
+html.mobile-shell .hotspot.near:before, html.mobile-shell .market-hotspot.near:before,
+html.mobile-shell .rival-hotspot.near:before, html.mobile-shell .extra-hotspot.near:before { background: #e6c17272; box-shadow: 0 0 0 2px #45341ca0, 0 0 14px #ffdc8999; }
+html.mobile-shell .hotspot:active, html.mobile-shell .market-hotspot:active,
+html.mobile-shell .rival-hotspot:active, html.mobile-shell .extra-hotspot:active,
+html.mobile-shell .hotspot.near, html.mobile-shell .market-hotspot.near,
+html.mobile-shell .rival-hotspot.near, html.mobile-shell .extra-hotspot.near { opacity: 1; }
+html.mobile-shell .hotspot span, html.mobile-shell .market-hotspot span,
+html.mobile-shell .rival-hotspot span, html.mobile-shell .extra-hotspot span { max-width: 190px; font-size: 10px; padding: 4px 6px; white-space: normal; width: max-content; text-align: center; bottom: 44px; pointer-events: none; }
+html.mobile-shell .near-prompt { font-size: 10px; max-width: 170px; padding: 3px 5px; white-space: normal; pointer-events: none; }
+html.mobile-shell .world-caption { left: 6px; bottom: 5px; max-width: calc(100% - 12px); padding: 4px 6px; border-width: 1px; pointer-events: none; }
+html.mobile-shell .world-caption span { font-size: 10px; }
+html.mobile-shell .world-caption small { display: none; }
+html.mobile-shell .rival-world:after, html.mobile-shell .extra-world:after { top: 6px; right: 6px; max-width: 65%; padding: 4px 6px; border-width: 1px; font-size: 9px; pointer-events: none; }
+html.mobile-shell .dock {
+  position: relative; bottom: auto; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  overflow: visible; justify-content: stretch; gap: 5px; margin: 0;
+  padding: 7px calc(8px + var(--safe-right)) calc(9px + var(--safe-bottom)) calc(8px + var(--safe-left));
+  border-top-width: 3px;
+}
+html.mobile-shell .dock button { min-width: 0; min-height: 48px; padding: 4px 2px; border-width: 1px; box-shadow: inset 0 0 0 1px #fff1cf, 0 2px #4c321f; }
+html.mobile-shell .dock button:hover { transform: none; }
+html.mobile-shell .dock i { font-size: 19px; line-height: 21px; }
+html.mobile-shell .dock span { font-size: 11px; white-space: nowrap; }
+html.mobile-shell .dock kbd { display: none; }
+
+html.mobile-shell .mobile-controls { position: absolute; inset: 0; z-index: 10; pointer-events: none; user-select: none; -webkit-user-select: none; }
+html.mobile-shell .mobile-touch-caption { position: absolute; left: 14px; right: 14px; bottom: 140px; text-align: center; color: #f7e9c8; text-shadow: 0 2px #182114; }
+html.mobile-shell .mobile-touch-caption b { display: block; font-size: 13px; letter-spacing: .06em; }
+html.mobile-shell .mobile-touch-caption span { display: block; margin-top: 5px; font-size: 10px; color: #c6d0b4; }
+html.mobile-shell .mobile-joystick-group { position: absolute; left: calc(20px + var(--safe-left)); bottom: 10px; text-align: center; }
+html.mobile-shell .mobile-joystick {
+  position: relative; width: 112px; height: 112px; border: 3px solid #a4ba82; border-radius: 50%;
+  background: radial-gradient(circle, #60774a 0 32%, #344b2ac9 33% 60%, #20331fea 61%);
+  box-shadow: inset 0 0 0 4px #273a23, 0 3px 0 #111d0f, 0 0 0 1px #1c2b19;
+  touch-action: none; pointer-events: auto; cursor: grab;
+}
+html.mobile-shell .mobile-joystick.pressed { border-color: #efd791; cursor: grabbing; }
+html.mobile-shell .mobile-stick-arrow { position: absolute; color: #c6d4aa; font: 700 25px/20px system-ui; font-style: normal; pointer-events: none; }
+html.mobile-shell .mobile-stick-arrow.up { left: 42px; top: 8px; }
+html.mobile-shell .mobile-stick-arrow.down { left: 43px; bottom: 8px; }
+html.mobile-shell .mobile-stick-arrow.left { left: 9px; top: 41px; }
+html.mobile-shell .mobile-stick-arrow.right { right: 9px; top: 41px; }
+html.mobile-shell .mobile-stick-knob {
+  --stick-x: 0px; --stick-y: 0px; position: absolute; left: 50%; top: 50%; width: 47px; height: 47px;
+  display: grid; place-items: center; transform: translate(calc(-50% + var(--stick-x)), calc(-50% + var(--stick-y)));
+  background: linear-gradient(135deg, #f6e7b5, #c9a86a); border: 3px solid #493621; border-radius: 50%;
+  box-shadow: inset 0 0 0 3px #fff0c6, 0 4px 7px #172512a6; color: #675037; font-size: 19px; pointer-events: none;
+}
+html.mobile-shell .mobile-control-label { display: block; max-width: 132px; margin-top: 7px; color: #d6e1c3; font-size: 11px; text-shadow: 0 1px #162011; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+html.mobile-shell .mobile-interact-group { position: absolute; right: calc(24px + var(--safe-right)); bottom: 29px; min-width: 93px; text-align: center; }
+html.mobile-shell .mobile-interact { display: grid; place-content: center; gap: 2px; width: 76px; height: 76px; margin: 0 auto; border: 3px solid #533b27; border-radius: 50%; background: linear-gradient(145deg, #f8e7b7, #d3af6b); box-shadow: inset 0 0 0 3px #fff0bd, 0 5px #302619; pointer-events: auto; font-size: 12px; }
+html.mobile-shell .mobile-interact > span { color: #7c5d2c; font-size: 23px; line-height: 24px; }
+html.mobile-shell .mobile-interact.ready { background: linear-gradient(145deg, #f7dfa0, #e1ad4e); border-color: #5d3d20; box-shadow: inset 0 0 0 3px #fff0bd, 0 5px #302619, 0 0 15px #e5bc5b66; }
+html.mobile-shell .mobile-interact:disabled { opacity: .53; }
+html.mobile-shell .mobile-interact:active:not(:disabled) { transform: translateY(3px); box-shadow: inset 0 0 0 3px #fff0bd, 0 2px #302619; }
+
+html.mobile-shell .title-screen { top: var(--mobile-viewport-top); left: var(--mobile-viewport-left); width: var(--mobile-viewport-width); height: var(--mobile-viewport-height); bottom: auto; padding: calc(14px + var(--safe-top)) calc(16px + var(--safe-right)) calc(16px + var(--safe-bottom)) calc(16px + var(--safe-left)); }
+html.mobile-shell .title-card { width: min(580px, 100%); max-height: 100%; padding: 24px 20px 20px; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+html.mobile-shell .title-card h1 { font-size: 46px; }
+html.mobile-shell .title-sub { font-size: 13px; line-height: 1.6; margin-bottom: 16px; }
+html.mobile-shell .title-pig { display: none; }
+html.mobile-shell .title-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+html.mobile-shell .title-actions .pixel-btn { padding: 10px 5px; font-size: 13px; }
+html.mobile-shell .save-list { max-height: 230px; }
+html.mobile-shell .save-card { min-height: 58px; grid-template-columns: minmax(0, 1fr) auto; gap: 4px; }
+html.mobile-shell .save-card > span { display: none; }
+html.mobile-shell .save-card .delete-save { width: 44px; height: 44px; }
+html.mobile-shell .title-foot { display: block; margin-top: 12px; font-size: 11px; line-height: 1.5; }
+html.mobile-shell .title-foot > span { display: block; }
+html.mobile-shell .title-foot .text-btn { padding-left: 0; }
+html.mobile-shell .overlay {
+  top: var(--mobile-viewport-top); left: var(--mobile-viewport-left); bottom: auto; width: var(--mobile-viewport-width); height: var(--mobile-viewport-height);
+  padding: calc(9px + var(--safe-top)) calc(9px + var(--safe-right)) calc(12px + var(--safe-bottom)) calc(9px + var(--safe-left));
+  overscroll-behavior: contain; overflow: hidden;
+}
+html.mobile-shell .panel-window { width: 100%; max-width: 980px; height: 100%; min-height: 0; max-height: 100%; box-shadow: 0 0 0 2px #c18a4b, 0 5px 15px #0006; }
+html.mobile-shell .panel-header { padding: 9px 10px; gap: 8px; }
+html.mobile-shell .panel-header h2 { font-size: 24px; }
+html.mobile-shell .panel-header p { font-size: 10px; }
+html.mobile-shell .panel-tabs { min-width: 0; padding: 6px 8px; gap: 5px; overscroll-behavior: contain; flex-shrink: 0; -webkit-overflow-scrolling: touch; }
+html.mobile-shell .panel-tabs button { font-size: 12px; padding: 6px 9px; }
+html.mobile-shell .panel-body { min-width: 0; min-height: 0; padding: 12px 10px 24px; overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; overflow-wrap: anywhere; font-size: 13px; }
+html.mobile-shell .panel-body .action-btn { min-height: 44px; font-size: 12px; }
+html.mobile-shell .section-head { flex-wrap: wrap; gap: 8px; }
+html.mobile-shell .section-head h3 { font-size: 18px; }
+html.mobile-shell .section-head p { font-size: 12px; }
+html.mobile-shell .farm-layout, html.mobile-shell .journal-layout { grid-template-columns: minmax(0, 1fr); }
+html.mobile-shell .pig-grid, html.mobile-shell .individual-feed-grid,
+html.mobile-shell .market-list, html.mobile-shell .build-grid, html.mobile-shell .catalog-grid,
+html.mobile-shell .travel-grid, html.mobile-shell .contract-grid,
+html.mobile-shell .story-goals, html.mobile-shell .story-timeline > div { grid-template-columns: minmax(0, 1fr); }
+html.mobile-shell .field-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+html.mobile-shell .breeding-form { grid-template-columns: minmax(0, 1fr); }
+html.mobile-shell .market-row, html.mobile-shell .build-card, html.mobile-shell .recipe-card { grid-template-columns: 38px minmax(0, 1fr); gap: 8px; }
+html.mobile-shell .market-actions, html.mobile-shell .build-card > .action-btn,
+html.mobile-shell .recipe-card > .action-btn { grid-column: 1 / -1; justify-self: stretch; }
+html.mobile-shell .market-actions { grid-template-columns: 1fr 1fr; }
+html.mobile-shell .pig-offer { grid-template-columns: 72px minmax(0, 1fr); }
+html.mobile-shell .market-toolbar { flex-wrap: wrap; gap: 8px; }
+html.mobile-shell .catalog-filter { flex-wrap: wrap; }
+html.mobile-shell .feed-strip { overscroll-behavior: contain; padding: 3px 3px 7px; }
+html.mobile-shell .feed-choice { min-width: 155px; }
+html.mobile-shell .pig-pen-picker { grid-template-columns: auto minmax(0, 1fr); }
+html.mobile-shell .pig-pen-picker small { grid-column: 1 / -1; }
+html.mobile-shell .individual-feed-controls { grid-template-columns: minmax(0, 1fr); }
+html.mobile-shell .pig-actions { flex-wrap: wrap; }
+html.mobile-shell .staff-summary { grid-template-columns: minmax(0, 1fr); }
+html.mobile-shell .staff-card { grid-template-columns: 45px minmax(0, 1fr); gap: 8px; }
+html.mobile-shell .staff-icon { width: 42px; height: 42px; }
+html.mobile-shell .staff-card .action-btn { grid-column: 1 / -1; }
+html.mobile-shell .rival-overview, html.mobile-shell .resource-strip,
+html.mobile-shell .rival-business-grid, html.mobile-shell .rival-stock { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+html.mobile-shell .rival-duel { grid-template-columns: minmax(0, 1fr); }
+html.mobile-shell .rival-duel > strong { text-align: center; }
+html.mobile-shell .festival-banner { flex-wrap: wrap; padding: 12px; gap: 8px; }
+html.mobile-shell .festival-banner > b { margin-left: 0; }
+html.mobile-shell .story-hero { padding: 12px; gap: 10px; }
+html.mobile-shell .story-hero h3 { font-size: 23px; }
+html.mobile-shell .story-seal { width: 54px; height: 54px; }
+html.mobile-shell .event-card, html.mobile-shell .ending-card,
+html.mobile-shell .confirm-card, html.mobile-shell .new-save-card { width: min(650px, 100%); max-height: 100%; overflow: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; padding: 19px 16px; }
+html.mobile-shell .new-save-card h2 { font-size: 23px; padding-right: 35px; }
+html.mobile-shell .new-save-card > .close-btn { top: 10px; right: 10px; }
+html.mobile-shell .event-choices { grid-template-columns: minmax(0, 1fr); }
+html.mobile-shell .ending-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+html.mobile-shell .dialogue { left: calc(12px + var(--safe-left)); right: calc(12px + var(--safe-right)); bottom: calc(16px + var(--safe-bottom)); width: auto; max-height: calc(var(--mobile-viewport-height) - 32px - var(--safe-top) - var(--safe-bottom)); grid-template-columns: 65px minmax(0, 1fr); transform: none; }
+html.mobile-shell .portrait { height: 90px; }
+html.mobile-shell .dialogue-box { min-width: 0; max-height: calc(var(--mobile-viewport-height) - 48px - var(--safe-top) - var(--safe-bottom)); overflow: auto; padding: 12px 13px 24px; margin-left: 0; }
+html.mobile-shell .dialogue-box b { font-size: 16px; }
+html.mobile-shell .dialogue-box p { font-size: 14px; line-height: 1.6; }
+html.mobile-shell .dialogue-choices { gap: 8px; }
+html.mobile-shell .dialogue-choices .pixel-btn { flex: 1 1 100%; font-size: 12px; }
+html.mobile-shell .toast { top: calc(12px + var(--safe-top)); max-width: calc(100% - 28px - var(--safe-left) - var(--safe-right)); width: max-content; font-size: 12px; padding: 9px 11px; }
+html.mobile-shell .festival-game-card { width: 100%; max-height: 100%; overflow: auto; }
+html.mobile-shell .festival-game-header { padding: 10px 12px; }
+html.mobile-shell .festival-game-header h2 { font-size: 23px; }
+html.mobile-shell .festival-game-hud { gap: 5px; padding: 7px 9px; font-size: 11px; }
+html.mobile-shell .festival-game-hud b { min-width: 68px; }
+html.mobile-shell .festival-game-intro, html.mobile-shell .festival-game-result { min-height: 0; padding: 22px 14px; gap: 12px; }
+html.mobile-shell .festival-game-intro > p { font-size: 13px; line-height: 1.6; }
+html.mobile-shell .festival-game-play { padding: 10px 9px 16px; }
+html.mobile-shell .festival-game-stage { min-height: 300px; }
+html.mobile-shell .flower-patch { gap: 6px; }
+html.mobile-shell .flower-choice { min-height: 75px; font-size: 29px; padding: 5px 2px; touch-action: manipulation; }
+html.mobile-shell .flower-choice:hover, html.mobile-shell .flower-choice:focus { transform: none; }
+html.mobile-shell .direction-button, html.mobile-shell .mud-hit { min-width: 48px; min-height: 48px; touch-action: manipulation; }
+html.mobile-shell .festival-result-breakdown { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+html.mobile-shell.mobile-landscape .topbar { grid-template-columns: minmax(100px, 1fr) auto auto auto; gap: 7px; padding-top: calc(5px + var(--safe-top)); padding-bottom: 5px; }
+html.mobile-shell.mobile-landscape .brand b { max-width: 145px; font-size: 12px; }
+html.mobile-shell.mobile-landscape .calendar-card { grid-column: 2; grid-row: 1; }
+html.mobile-shell.mobile-landscape .top-stats { grid-column: 3; grid-row: 1; }
+html.mobile-shell.mobile-landscape .top-controls { grid-column: 4; grid-row: 1; }
+html.mobile-shell.mobile-landscape .top-controls .icon-btn { width: 44px; height: 44px; }
+html.mobile-shell.mobile-landscape .stat-chip.weather { display: none; }
+html.mobile-shell.mobile-landscape .world-wrap { padding-bottom: 0; }
+html.mobile-shell.mobile-landscape .dock { grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 4px; padding-top: 5px; padding-bottom: calc(7px + var(--safe-bottom)); }
+html.mobile-shell.mobile-landscape .dock button { min-height: 44px; }
+html.mobile-shell.mobile-landscape .dock i { font-size: 17px; line-height: 18px; }
+html.mobile-shell.mobile-landscape .dock span { font-size: 10px; }
+html.mobile-shell.mobile-landscape .mobile-touch-caption { left: auto; right: calc(10px + var(--safe-right)); top: 15px; bottom: auto; width: 105px; }
+html.mobile-shell.mobile-landscape .mobile-touch-caption b { font-size: 10px; }
+html.mobile-shell.mobile-landscape .mobile-touch-caption span { display: none; }
+html.mobile-shell.mobile-landscape .mobile-joystick-group { left: calc(10px + var(--safe-left)); bottom: 10px; }
+html.mobile-shell.mobile-landscape .mobile-joystick { width: 100px; height: 100px; }
+html.mobile-shell.mobile-landscape .mobile-stick-arrow.up { left: 37px; top: 5px; }
+html.mobile-shell.mobile-landscape .mobile-stick-arrow.down { left: 37px; bottom: 5px; }
+html.mobile-shell.mobile-landscape .mobile-stick-arrow.left { top: 35px; left: 6px; }
+html.mobile-shell.mobile-landscape .mobile-stick-arrow.right { top: 35px; right: 6px; }
+html.mobile-shell.mobile-landscape .mobile-interact-group { right: calc(13px + var(--safe-right)); bottom: 21px; }
+html.mobile-shell.mobile-landscape .mobile-interact { width: 68px; height: 68px; }
+html.mobile-shell.mobile-landscape .mobile-control-label { max-width: 107px; font-size: 10px; }
+html.mobile-shell.mobile-landscape.mobile-compact .topbar { grid-template-columns: minmax(29px, 1fr) auto auto auto; gap: 5px; }
+html.mobile-shell.mobile-landscape.mobile-compact .brand b { display: none; }
+html.mobile-shell.mobile-landscape.mobile-compact .calendar-card span:last-child,
+html.mobile-shell.mobile-landscape.mobile-compact .top-stats .stat-chip:nth-child(2) { display: none; }
+html.mobile-shell.mobile-landscape .pig-grid, html.mobile-shell.mobile-landscape .individual-feed-grid,
+html.mobile-shell.mobile-landscape .catalog-grid, html.mobile-shell.mobile-landscape .build-grid,
+html.mobile-shell.mobile-landscape .market-list, html.mobile-shell.mobile-landscape .travel-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+html.mobile-shell.mobile-landscape .title-card { padding: 17px 21px; }
+html.mobile-shell.mobile-landscape .title-card h1 { font-size: 35px; }
+html.mobile-shell.mobile-landscape .title-sub { margin: 8px 0 12px; }
+html.mobile-shell.mobile-landscape .title-rule { margin: 13px 0 10px; }
+html.mobile-shell.mobile-landscape .save-list { max-height: 150px; }
+html.mobile-shell.mobile-landscape .dialogue { max-width: 760px; margin: 0 auto; grid-template-columns: 80px minmax(0, 1fr); }
+html.mobile-shell.mobile-landscape .portrait { height: 100px; }
+html.mobile-shell.mobile-keyboard-open .dialogue .portrait { display: none; }
+html.mobile-shell.mobile-keyboard-open .dialogue { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 360px) {
+  html.mobile-shell .calendar-card span:last-child { display: none; }
+  html.mobile-shell .brand b { max-width: 105px; }
+  html.mobile-shell .stat-chip { font-size: 11px; padding: 4px 5px; }
+  html.mobile-shell .top-controls { gap: 4px; }
+  html.mobile-shell .icon-btn { width: 44px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.mobile-shell .mobile-interact, html.mobile-shell .mobile-stick-knob { transition: none; }
+}

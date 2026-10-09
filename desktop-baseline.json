@@ -1,0 +1,370 @@
+[
+  {
+    "path": "美术更新说明.md",
+    "hash": "A77E9063E4920C3AB30F1D1086A071150E6A02AAB4A6164739F8816E8CEAEAF0"
+  },
+  {
+    "path": "美术素材说明.md",
+    "hash": "B15A99A89A64D440B2D05D8EB6B49176E2FADADB791D8D832111C07721A3C48E"
+  },
+  {
+    "path": "美术预览.html",
+    "hash": "0F6946BF6300FFA7D08D71253E6D54D0ED3CFBDF8621D1EB288B37BC11AD5995"
+  },
+  {
+    "path": "启动游戏.bat",
+    "hash": "C369A077A253E26E89B85071FB50BB426AB159E49027572D5F1F18497386F266"
+  },
+  {
+    "path": "通关攻略.md",
+    "hash": "75410CEC5D7105B98F90199DAA1A798BAE68BB09AC530F0E04A19F9A685FAB42"
+  },
+  {
+    "path": "新版图鉴预览.png",
+    "hash": "06CC9405291FE17A9F229A93AE2DF9FC4BFB6AFDE89095766E9C6045E0BAFED9"
+  },
+  {
+    "path": "验收记录.md",
+    "hash": "1C87008B7CAA0749E6F644FC35D1F32287BB36AF5F33C310509BFF5F0F9A95A5"
+  },
+  {
+    "path": "猪只翻背姿势生成提示词.txt",
+    "hash": "0C8A912FD8471E8CF637B430E4CE6816B10178FD3995086C65827E7380ACDAEF"
+  },
+  {
+    "path": "猪种立绘生成提示词.txt",
+    "hash": "B5B274AFA180A43D4388E2E5D14130B33C587CE0E3E0E496EB6C592EF83D6EAE"
+  },
+  {
+    "path": "animation.js",
+    "hash": "AB524D5597144CA6319BFFA94AAA6C2950649C3FB018ADA2D773EE2B219A83BA"
+  },
+  {
+    "path": "app.js",
+    "hash": "FC43901E102DCEA59F6BF4E05F31416FC51709112E3C79EFC17990FF7F0D8227"
+  },
+  {
+    "path": "breed-art.js",
+    "hash": "5E3824D08209F1D12C1DA16FCC06AFB12CB209FE7BD5048D6F71F965BB015BC4"
+  },
+  {
+    "path": "data.js",
+    "hash": "AB7D010F7CB6D3388CB53D7980F28E2177E116C929113F4B48BE518CF2523341"
+  },
+  {
+    "path": "engine.js",
+    "hash": "D75D9A7C61FC34AD8288ADEC8336F9E8DF29101639127062CDDF2CD70B27738F"
+  },
+  {
+    "path": "index.html",
+    "hash": "C7B6264FC590277B1C8B07D9108B170BB0A539D157D8DFB755B96CD77876D53C"
+  },
+  {
+    "path": "package.json",
+    "hash": "CFBE5B033F390B918451E5384677CD4D1401ADC611519ABAEDF28CF3C4B9AC35"
+  },
+  {
+    "path": "README.md",
+    "hash": "44F069EBEFDEED0B25EA06790A1C3D728D53B041E049CC7106BF30224C80C5E7"
+  },
+  {
+    "path": "scene.js",
+    "hash": "7763F757F5F9DDE2B4BE7EEEE6A184C25B82F5D80053C51E432C1286F75AE0E3"
+  },
+  {
+    "path": "styles.css",
+    "hash": "E20B4087A11F04F3E53E0D96613407169F752E87541EB35387E1362D35B018FA"
+  },
+  {
+    "path": "assets\\farmer-idle-v2.png",
+    "hash": "C29FB1F3C6FA2AE26F716AC0FF0A7FB745E4BE1C076F62B071BF320B68F49516"
+  },
+  {
+    "path": "assets\\farmer-sprites-v2.png",
+    "hash": "CF168549145D7DFA4E59F95218FB61F3D73B657FC1DD81137F35312FDD69FF70"
+  },
+  {
+    "path": "assets\\favicon.svg",
+    "hash": "7103D8DF61CBE676530A4454F8D36022076038A3879C7D253B226E5FA6CCC0DB"
+  },
+  {
+    "path": "assets\\pig-breeds-atlas-v3.png",
+    "hash": "FB7333B021BAFAD1E07C755506C0286B1C80A931D7757002F0AE4CE016345BDE"
+  },
+  {
+    "path": "assets\\pig-roll-atlas-v3.png",
+    "hash": "01E6D9ED2560EC1A7E345F5E66800875D8EED1434D066843DEB58D52250E24CF"
+  },
+  {
+    "path": "assets\\pig-roll-sprites-v1.png",
+    "hash": "C05891F25C869388752321394B4864CE3EF103911D2412F1282AE973210F3700"
+  },
+  {
+    "path": "assets\\pig-sprites-v2.png",
+    "hash": "6EB3A5E870C5C7B8D9D7F0E75485D44E46309710D0812DE1842BCC7BEE75867B"
+  },
+  {
+    "path": "assets\\pixel-contest-v1.png",
+    "hash": "E0C946FD100E6EC8C28F559598DBB13C27A16606F3C83945AA4004E86A90D33D"
+  },
+  {
+    "path": "assets\\pixel-farm-large-pen-v2.png",
+    "hash": "4F236C838DEA123D70D6B039140ED0AE142172903C22CEFCF8A0D09B8A5FE42F"
+  },
+  {
+    "path": "assets\\pixel-farm.png",
+    "hash": "E40BD8123AF524E11B3C6340ADA40B8364F40C66EB0FF658DF8C784C0A002637"
+  },
+  {
+    "path": "assets\\pixel-forest-v1.png",
+    "hash": "3958161862DA34A4268A206BB1EFF8BDBE1D560C99F7F2C566F9EE47B1BC688A"
+  },
+  {
+    "path": "assets\\pixel-market-v1.png",
+    "hash": "484EA93B59C8AA7BAE553A59753C6BAB9C92F1B2E5524DB8C625E18C540E41AD"
+  },
+  {
+    "path": "assets\\pixel-rival-farm-v1.png",
+    "hash": "FE040E0C9E9B56891306E728162D959C5B1E45E4C16167BF762BEA7B6FEA16F5"
+  },
+  {
+    "path": "assets\\pixel-village-v1.png",
+    "hash": "E2105EFCBA5FE99FFF521D493F1873BA95454C197DF9EB30DB1C42E67C0932ED"
+  },
+  {
+    "path": "assets\\portraits.png",
+    "hash": "103FAB296833378B09913B8C5830525136E059BC74904D148DC8C9247F1462E5"
+  },
+  {
+    "path": "assets\\rival-facilities-board-v1.png",
+    "hash": "BD6B65951F6E392498BC23347D483449C7C02DDF05FB69AA5672BBE262746ACC"
+  },
+  {
+    "path": "assets\\rival-idle-v1.png",
+    "hash": "E6169F829C6F4E6D8272F3D5A0D6923FD14B809EF26538471CAF56D417B00706"
+  },
+  {
+    "path": "assets\\breeds\\americanmini.png",
+    "hash": "65C37F401D764305314A39AEF16C3E1E9738C0B69491FB6D8BDFB1B0E224E527"
+  },
+  {
+    "path": "assets\\breeds\\berkshire.png",
+    "hash": "D3F516328889348C620381D12DFC211457A81543BA14E5AA43D07D0500D485CD"
+  },
+  {
+    "path": "assets\\breeds\\chesterwhite.png",
+    "hash": "3012306ECCD1BC3736C5412CD2A8314331CB557D9A499BBC5BAB9331ED9C5AA1"
+  },
+  {
+    "path": "assets\\breeds\\duroc.png",
+    "hash": "E2432EC8B077476A2971D8991DCB35F74C0B1126A3C942F6C6F89A198F7DFC77"
+  },
+  {
+    "path": "assets\\breeds\\erhualian.png",
+    "hash": "05CD3CF23F10ED19DA58A72AEAD36056F927ECE1112BAEF2EB7AC4CE4DF6BC58"
+  },
+  {
+    "path": "assets\\breeds\\gottingen.png",
+    "hash": "6A4DD43C93417D4A4BE466AF4BE411ACAECC1DB6BDA96235099720F32F8FB336"
+  },
+  {
+    "path": "assets\\breeds\\hampshire.png",
+    "hash": "EE37FD92F5CE968626626F7BF6C9A5EF9437DA47F1C8C869062B130B2A9B9409"
+  },
+  {
+    "path": "assets\\breeds\\jinhua_sow.png",
+    "hash": "28123CBBC7A1216C89267032BC5D249A5D1D5F88371DC0CF963D08215FE28F65"
+  },
+  {
+    "path": "assets\\breeds\\jinhuapig.png",
+    "hash": "9560B24379485BB3F86ED5F8A2174BA8C6616747F70C72533234B86B76E26BAE"
+  },
+  {
+    "path": "assets\\breeds\\juliana.png",
+    "hash": "20948EA7D8587F5B8E6FB921FB38E0A462B1EC01D336644FAB1D6D35938BAF4C"
+  },
+  {
+    "path": "assets\\breeds\\kunekune.png",
+    "hash": "51CABB0E38B5338EB254C35552E70F64A344201D42A97A26D7912B55B6BE4B85"
+  },
+  {
+    "path": "assets\\breeds\\landrace.png",
+    "hash": "9A96FE303966DDB6B74806BF4ED981DB1BF2DE3A284C6F05DA000E8BE57AFFB0"
+  },
+  {
+    "path": "assets\\breeds\\largeblack.png",
+    "hash": "6DD9550F07E547D39B6125861A1F0DBBF6BCCA25713893900B07D9A094E0D77A"
+  },
+  {
+    "path": "assets\\breeds\\largewhite.png",
+    "hash": "768E42013F2726D835ED751C4B3ADF7765AA62CDF83884FCA2274E14D12E540A"
+  },
+  {
+    "path": "assets\\breeds\\mangalica.png",
+    "hash": "19D9208711C741124F55ACAC1F377DAC6EF7B8AF071BA043DD5A6B584A7A78DE"
+  },
+  {
+    "path": "assets\\breeds\\meishan.png",
+    "hash": "758B253A7B096FB7B1C4C62C1CAB8CE7AD8733F4FF103CB8219A66B8FFF6C85F"
+  },
+  {
+    "path": "assets\\breeds\\minzhu.png",
+    "hash": "FE76CA56169A0C3843ECCD33F8B44678569B993C5306F3362330F059DDF65446"
+  },
+  {
+    "path": "assets\\breeds\\neijiang.png",
+    "hash": "1B3777BD292FF6732BF5E942BF8C24A35CAF789BD7D4CB9DDCAEE80456E51246"
+  },
+  {
+    "path": "assets\\breeds\\ningxiang.png",
+    "hash": "03846397596196C8DFE3054EE3AD503A764B8631F9843D0BA04C7832FBB1FA6F"
+  },
+  {
+    "path": "assets\\breeds\\oxford.png",
+    "hash": "FFFBB749B49980415616D90D2858BA53532CBDBA446B90658AEBD80D85751397"
+  },
+  {
+    "path": "assets\\breeds\\pietrain.png",
+    "hash": "47ADF61797230C8FEE27B9B0742C859036FD105AF324480B48B413D582A1E92F"
+  },
+  {
+    "path": "assets\\breeds\\polandchina.png",
+    "hash": "DED8538BD5D511812B81B73F84267C920D42C006C92AF92EA31661E3F0210579"
+  },
+  {
+    "path": "assets\\breeds\\potbelly.png",
+    "hash": "9EA07D20EC3CD93A8950C3BE67EF60610CD45B90BE22DFF11FCE6EC13CFEF648"
+  },
+  {
+    "path": "assets\\breeds\\rongchang.png",
+    "hash": "EE7CCA8E7E3E36B98EB4372D85ED6181E95C4C40EDCE8872C3AF6EF07E5489EE"
+  },
+  {
+    "path": "assets\\breeds\\taihu.png",
+    "hash": "16B1937D765DD71D21CAFE7D7DE5062A238CB34FDC28CFBCBF706A646C443889"
+  },
+  {
+    "path": "assets\\breeds\\tamworth.png",
+    "hash": "63757D16083875B19C9175E8A3325807950F8A2C21B19B7314ACB22B84087B4E"
+  },
+  {
+    "path": "assets\\breeds\\tibetan.png",
+    "hash": "83B4E3EA7730A7DABDFDF5D5C96F2726FE5B7227EA487AD5EAA59FA7AE54E486"
+  },
+  {
+    "path": "assets\\breeds\\wuzhishan.png",
+    "hash": "E775D59432239AB7FA23DE0AFD21FA78BE4BCA721C74D6C594CA9E1CF59AEF30"
+  },
+  {
+    "path": "assets\\roll-poses\\americanmini.png",
+    "hash": "46EA5C1305896E6D3C9F85050BD9C52E4F529DCBDAF5664A65AA84008A0671C8"
+  },
+  {
+    "path": "assets\\roll-poses\\berkshire.png",
+    "hash": "AFB38E951C668974CB97C7FD1FACBC5FE338E5CCCAAD284EB5A5F46F8439EE37"
+  },
+  {
+    "path": "assets\\roll-poses\\chesterwhite.png",
+    "hash": "78C7D385C86D9A739EA0D900C12498BFE6FD45DEE8C942411A2D1E7703C9580B"
+  },
+  {
+    "path": "assets\\roll-poses\\duroc.png",
+    "hash": "0754E1A08ACFE5696DDD3F94B1B3E1CB7D32A211E206AC11C02F24C56B93AC7A"
+  },
+  {
+    "path": "assets\\roll-poses\\erhualian.png",
+    "hash": "4268D18BAF65021C647E0CB53E07D500036429289E317C8F6B9CF72CA2077AC0"
+  },
+  {
+    "path": "assets\\roll-poses\\gottingen.png",
+    "hash": "D7CDDAC7A47D52B2F078FC3A9C848A022475A8C15F90D1583769867857EB9758"
+  },
+  {
+    "path": "assets\\roll-poses\\hampshire.png",
+    "hash": "D254CD902419FC9F3E564EF032C6FD8D727D99CCFD3D6DFB340A975D04180410"
+  },
+  {
+    "path": "assets\\roll-poses\\jinhua_sow.png",
+    "hash": "17B522224E56E8439A7EB678FBBA825AA8D18F8BCA28F189AB709A577227C695"
+  },
+  {
+    "path": "assets\\roll-poses\\jinhuapig.png",
+    "hash": "3FD1F13777B4A7E08EBF0BD477128D6EC206C8E90273044D65F49D63712B6495"
+  },
+  {
+    "path": "assets\\roll-poses\\juliana.png",
+    "hash": "F76B414B235F64A692E125A863191BB17A7DF1A1F33273EC1532142B45AD359A"
+  },
+  {
+    "path": "assets\\roll-poses\\kunekune.png",
+    "hash": "AA8B55B92112F0C7DFCFE5E900C2CBD8EB154363615E9B298A94C8CB4F4412C9"
+  },
+  {
+    "path": "assets\\roll-poses\\landrace.png",
+    "hash": "D736BE4C08CFA5D53E227577BE522100FEA2AEE2356CAD3544E0B33D0F8E238E"
+  },
+  {
+    "path": "assets\\roll-poses\\largeblack.png",
+    "hash": "80024AAF6F2D9365F82B87DB87B6FBA282B4745F62FF41E905331F477D26890C"
+  },
+  {
+    "path": "assets\\roll-poses\\largewhite.png",
+    "hash": "11227E744A0A8EA9462E9FC9F3095357D49A89F95CB52269EA1B1F17F247706D"
+  },
+  {
+    "path": "assets\\roll-poses\\mangalica.png",
+    "hash": "3A148A0A3EFAFD376B581A46AF1A69D6200E22938641C9E0CA5750B8F25E8303"
+  },
+  {
+    "path": "assets\\roll-poses\\meishan.png",
+    "hash": "B1EC0A37543FE2835C5FAC2C78D72DF1CDCE62BF47001FD11D3CA88F3404867E"
+  },
+  {
+    "path": "assets\\roll-poses\\minzhu.png",
+    "hash": "D2F42A520C207A1F7BDFF78FC8A7E084A6C2B91C75A5BE13C160B891D3CA7286"
+  },
+  {
+    "path": "assets\\roll-poses\\neijiang.png",
+    "hash": "2BA50EB66849DAFB1FE43B7F24F9B120F0CF66CC5312661DD3A7EDB39E7AF89B"
+  },
+  {
+    "path": "assets\\roll-poses\\ningxiang.png",
+    "hash": "C4EDE7ED33186E034E6103878828F2EAD9251B9A5DC18F1C60FB550BBF630D2A"
+  },
+  {
+    "path": "assets\\roll-poses\\oxford.png",
+    "hash": "3EE5A9476000A641E3BAE62C80B168E37A67007D4CFDF793514E7704CA371D4F"
+  },
+  {
+    "path": "assets\\roll-poses\\pietrain.png",
+    "hash": "319D1F8F4D315FAE8FF0156AEB6B477114C12AE133A0717776EF72E7AFB5AF86"
+  },
+  {
+    "path": "assets\\roll-poses\\polandchina.png",
+    "hash": "55C4E3F3049E3989BA661E91CAA52A06ECC010CBEA58A0AAE08B68DCA61EF375"
+  },
+  {
+    "path": "assets\\roll-poses\\potbelly.png",
+    "hash": "654A4BE6679D6219A2B79216A82F39F9BF3A150AA5718E101001B74DE7C4F83C"
+  },
+  {
+    "path": "assets\\roll-poses\\rongchang.png",
+    "hash": "60E3F9D5AF9DFC8FD4F9ABE9E99BFC1DB941ECAF1B2D57B938BFE2F3FF543F67"
+  },
+  {
+    "path": "assets\\roll-poses\\taihu.png",
+    "hash": "E6419C7CB9785E18697EB2A387D1FC9F06D5E26A8C6F5702A5429F23CA626755"
+  },
+  {
+    "path": "assets\\roll-poses\\tamworth.png",
+    "hash": "9540102DE838A24361D2C9953BC9DEE26B374172CF1966F3E9438DAE41D7BCE7"
+  },
+  {
+    "path": "assets\\roll-poses\\tibetan.png",
+    "hash": "9D271B97260E426FB6B47FEDBE054471AC2A66B59318FCD9EC576F31D2FA33BF"
+  },
+  {
+    "path": "assets\\roll-poses\\wuzhishan.png",
+    "hash": "27BC9B0D70BA2A4BE2E237848BE56DCBA501769B419A976783A0E0352329E99A"
+  }
+]

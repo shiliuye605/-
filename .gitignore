@@ -1,0 +1,13 @@
+node_modules/
+dist/
+desktop-build/
+qa/
+tests/touch-results/
+.openai/
+*.zip
+*.tar.gz
+*.log
+.DS_Store
+.env
+.env.*
+!.env.example
